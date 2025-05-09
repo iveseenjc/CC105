@@ -1,0 +1,197 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
+	padding: 40px 0;
+}
+
+.container {
+	background: #ffffff;
+	padding: 30px;
+	border-radius: 15px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 800px;
+	min-width: 600px;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 25px;
+	color: #2f3640;
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+form input, form select, form button {
+	padding: 10px;
+	border: 1px solid #dcdde1;
+	border-radius: 8px;
+	font-size: 1rem;
+}
+
+form input[type="text"] {
+	flex: 2;
+}
+
+form input[type="date"], form select {
+	flex: 1;
+}
+
+form #taskPriority {
+	cursor: pointer;
+}
+
+form button {
+	background-color: #00a8ff;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+form button:hover {
+	filter: brightness(85%);
+}
+
+.filters {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.filters button {
+	padding: 8px 15px;
+	border: none;
+	border-radius: 8px;
+	background-color: #e1e1e1;
+	cursor: pointer;
+
+	&:hover {
+		filter: brightness(85%);
+	}
+}
+
+ul#taskList {
+	list-style: none;
+	padding: 0;
+}
+  
+.delete-all-button {
+	background-color: #ff4040 !important;
+	color: white;
+}
+  
+.delete-all-button:hover {
+	filter: brightness(85%);
+}
+
+li {
+	background: #f0f0f0;
+	border-left: 5px solid #718093;
+	margin-bottom: 10px;
+	padding: 15px;
+	border-radius: 8px;
+	display: grid;
+	grid-template-columns: 35% 5fr 20% 1fr 1fr;
+	place-items: center;
+
+	& > *:first-child {
+		place-self: center start;
+	}
+}
+
+li.low {
+	border-color: #44bd32;
+}
+
+li.medium {
+	border-color: #fbc531;
+}
+
+li.high {
+	border-color: #e84118;
+}
+
+li.overdue {
+	border-left: 5px solid #718093;
+	background-color: #ffc6c6;
+}
+
+.task-info {
+	flex: 1;
+}
+
+.task-info h3 {
+	margin: 0 0 5px 0;
+	font-size: 1.1rem;
+}
+
+.task-info span {
+	color: #718093;
+	font-size: 0.9rem;
+}
+
+li button {
+	width: 2rem;
+	height: 2rem;
+	background-color: #408040;
+	color: white;
+	font-size: 1.2rem;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+
+	&.delete-button {
+		background-color: #ff4040;
+	}
+
+	&:hover {
+		filter: brightness(85%);
+	}
+
+	&:active {
+		filter: brightness(75%);
+	}
+} 
+
+.modal-overlay {
+  	position: fixed;
+  	top: 0; left: 0; right:0; bottom:0;
+  	background: rgba(0,0,0,0.5);
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	z-index: 10;
+}
+.modal {
+  background: white;
+  	padding: 20px;
+  	border-radius: 8px;
+  	width: 90%;
+  	max-width: 400px;
+}
+.modal label {
+  	display: block;
+  	margin-bottom: 10px;
+}
+.modal-buttons {
+  	text-align: right;
+  	margin-top: 15px;
+}
+.modal-buttons button {
+  	margin-left: 10px;
+}
