@@ -13,7 +13,7 @@
 		<div class="container">
 			<h1>My To-Do List</h1>
 
-			<form id="taskForm">
+			<form id="taskForm" autocomplete="off">
 				<input type="text" id="taskTitle" placeholder="Enter task name" required />
 				<input type="datetime-local" id="taskDue"/>
 				<select id="taskPriority">
@@ -21,16 +21,16 @@
 					<option value="Medium" selected>Medium</option>
 					<option value="High">High</option>
 				</select>
-				<button type="submit">Add Task</button>
+				<button type="button" type="submit">Add Task</button>
 			</form>
 
 			<div class="filters">
-				<button id="sortCreatedBtn" onclick="sortTasks('created')">Sort by Created</button>
-				<button id="sortDueBtn" onclick="sortTasks('due')">Sort by Due</button>
-				<button id="sortPriorityBtn" onclick="sortTasks('priority')">Sort by Priority</button>
-				<button id="sortOverdueBtn" onclick="sortTasks('overdue')">Sort by Overdue</button>
+				<button type="button" id="sortCreatedBtn" onclick="sortTasks('created')">Sort by Created</button>
+				<button type="button" id="sortDueBtn" onclick="sortTasks('due')">Sort by Due</button>
+				<button type="button" id="sortPriorityBtn" onclick="sortTasks('priority')">Sort by Priority</button>
+				<button type="button" id="sortOverdueBtn" onclick="sortTasks('overdue')">Sort by Overdue</button>
 
-				<button id="deleteAllBtn" class="delete-all-button" onclick="deleteAllTasks()">
+				<button type="button" id="deleteAllBtn" class="delete-all-button" onclick="deleteAllTasks()">
 					<i class="fa fa-trash"></i> Delete All Tasks
 				</button>
 			</div>
@@ -63,8 +63,8 @@
 					</select>
 					</label>
 					<div class="modal-buttons">
-					<button type="submit">Save</button>
-					<button type="button" id="editCancel">Cancel</button>
+					<button type="button" type="submit">Save</button>
+					<button type="button" type="button" id="editCancel">Cancel</button>
 					</div>
 				</form>
 			</div>
