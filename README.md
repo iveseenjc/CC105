@@ -43,11 +43,13 @@ If you don't have Node.js installed:
 
    > ⚠️ Make sure these credentials match those in your `server.js` file (lines ~13–19):
    ```js
-   const db = mysql.createConnection({
-     host: 'localhost',
-     user: 'root',
-     password: '', // Or your password
-     database: 'db_group5_cc105'
+   const db = mysql.createPool({
+   	host: "localhost",
+   	user: "root",
+   	password: "", // Or your password
+   	database: "db_group5_cc105",
+   	port: 3306,
+   	multipleStatements: true
    });
    ```
 
@@ -59,7 +61,7 @@ If you don't have Node.js installed:
 
 1. Open the project folder in VS Code.
 
-2. Open a new terminal (`Ctrl + \``) and run:
+2. Open a new terminal ``(Ctrl + `)`` and run:
 
    ```bash
    npm install         # Install dependencies
