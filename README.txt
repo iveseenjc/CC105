@@ -31,7 +31,7 @@ This is a simple task manager app built with HTML, CSS, JavaScript, Node.js, and
 2. Start your MySQL Server (In MySQL Workbench or XAMPP)
 3. Import / Restore "database-setup.sql" and execute the entire query to create the necessary database
 4. Go to VS Code and open the project
-5. Open a new Terminal (Ctrl + `) and run the following:
+5. Open a new Terminal (Ctrl + `) and run the following: # SIDE NOTE: Apparently, Powershell blocks certain commands like "npm install", so use CMD instead as your terminal
     - npm install # just to make sure everything works
     - node server.js # to run the local server
     NOTE: to know if it is connected, it should output: 
