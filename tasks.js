@@ -118,8 +118,7 @@ function editTask(id) {
 		return alert("Task not found");
 	showEditModal(task);
 }
-  
-// Open the modal and populate fields
+
 function showEditModal(task) {
 	document.getElementById('editTitle').value = task.task_title;
 	document.getElementById('editDue').value = task.task_due || '';
@@ -128,7 +127,6 @@ function showEditModal(task) {
 	const overlay = document.getElementById('editModal');
 	overlay.style.display = 'flex';
   
-	// Attach submission handler
 	const form = document.getElementById('editForm');
 	form.onsubmit = async e => {
 		e.preventDefault();
@@ -136,16 +134,14 @@ function showEditModal(task) {
 			task_title: document.getElementById('editTitle').value,
 			task_due:   document.getElementById('editDue').value || null,
 			task_priority: document.getElementById('editPriority').value,
-			created_at: new Date().toISOString() // 👈 add this line
+			created_at: new Date().toISOString()
 		};
 
 		await updateTask(task.id, updated);
 		closeEditModal();
 		loadTasks();
 	};
-	  
-  
-	// Cancel button
+
 	document.getElementById('editCancel').onclick = () => {
 	  	closeEditModal();
 	};
@@ -154,7 +150,6 @@ function showEditModal(task) {
 function closeEditModal() {
 	document.getElementById('editModal').style.display = 'none';
 }
-  
 
 function deleteTask(id) {
 	if (!confirm("Delete this task?")) 
@@ -164,7 +159,7 @@ function deleteTask(id) {
 }
 
 function deleteAllTasks() {
-	if (!confirm("Delete **ALL** tasks?")) return;
+	if (!confirm("Delete ALL tasks?")) return;
 	fetch(API, 
 		{ method: "DELETE" }
 	)
@@ -188,7 +183,8 @@ function sortTasks(criteria) {
 			noDue.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 			withDue.sort((a, b) => new Date(a.task_due)    - new Date(b.task_due));
 			sorted = noDue.concat(withDue);
-		} else {
+		} 
+		else {
 
 			withDue.sort((a, b) => new Date(b.task_due)    - new Date(a.task_due));
 			noDue.sort((a, b)  => new Date(b.created_at)  - new Date(a.created_at));
@@ -200,39 +196,41 @@ function sortTasks(criteria) {
 		sorted.sort((a, b) =>
 			(order[a.task_priority] || 4) - (order[b.task_priority] || 4)
 		);
-		if (!ascending) sorted.reverse();
+
+		if (!ascending) 
+			sorted.reverse();
 	}
 	else if (criteria === "created") {
 		sorted.sort((a, b) =>
 			new Date(a.created_at) - new Date(b.created_at)
 		);
-		if (ascending) sorted.reverse();
+
+		if (ascending) 
+			sorted.reverse();
 	}
 	else if (criteria === "overdue") {
 		const now = Date.now();
 		const overdue = sorted.filter(t =>
 			t.task_due && new Date(t.task_due).getTime() < now
 		);
+
 		const rest = sorted.filter(t =>
 			!(t.task_due && new Date(t.task_due).getTime() < now)
 		);
 	
 		if (ascending) {
-			// Asc: overdue oldest→newest, rest oldest→newest
 			overdue.sort((a, b) => new Date(a.task_due)   - new Date(b.task_due));
 			rest.sort((a, b)    => new Date(a.created_at) - new Date(b.created_at));
-		} else {
-			// Desc: overdue newest→oldest, rest newest→oldest
+		} 
+		else {
 			overdue.sort((a, b) => new Date(b.task_due)   - new Date(a.task_due));
 			rest.sort((a, b)    => new Date(b.created_at) - new Date(a.created_at));
 		}
 		sorted = overdue.concat(rest);
 	}
   
-	// flip the direction for next click
 	sortStates[criteria] = !ascending;
   
-	// update arrow on the button
 	const btn = document.getElementById({
 		due:           'sortDueBtn',
 		priority:      'sortPriorityBtn',
@@ -250,5 +248,5 @@ function sortTasks(criteria) {
 } 
 
 window.onload = () => {
-  loadTasks();
+  	loadTasks();
 };
