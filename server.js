@@ -1,5 +1,6 @@
 const express = require("express");
-const mysql = require("mysql");
+// const mysql = require("mysql");
+const mysql = require("mysql2");
 const cors = require("cors");
 
 const app = express();
@@ -10,16 +11,33 @@ app.use(cors());
 app.use(express.json());
 
 // MySQL Connection
-const db = mysql.createConnection({
+const db = mysql.createPool({
 	host: "localhost",
 	user: "root",
 	password: "",
 	database: "db_group5_cc105",
 	port: 3306,
+	multipleStatements: true
 });
 
-db.connect((err) => {
-	if (err) throw err;
+// Auto-create database and table if they don't exist
+const setupSQL = `
+	CREATE DATABASE IF NOT EXISTS db_group5_cc105;
+	USE db_group5_cc105;
+	CREATE TABLE IF NOT EXISTS tasks (
+		id INT AUTO_INCREMENT PRIMARY KEY,
+		task_title VARCHAR(255) NOT NULL,
+		task_due DATETIME,
+		task_priority VARCHAR(50) DEFAULT 'Medium',
+		created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);
+`;
+
+db.query(setupSQL, (err, results) => {
+	if (err) {
+		console.error("Setup failed:", err);
+		return;
+	}
 	console.log("MySQL Connected!");
 });
 

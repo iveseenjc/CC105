@@ -9,7 +9,13 @@ const sortStates = {
 };
 
 async function loadTasks() {
-	const res = await fetch(API);
+	const res = await fetch(API)
+		.catch(
+			err => {
+				alert("Please run 'node server.js' in your terminal, then refresh the page.");
+				throw err;
+			}
+		);
 	allTasks = await res.json();
 	renderTasks(allTasks);
 }
@@ -132,7 +138,7 @@ function showEditModal(task) {
 			task_priority: document.getElementById('editPriority').value,
 			created_at: new Date().toISOString() // 👈 add this line
 		};
-		
+
 		await updateTask(task.id, updated);
 		closeEditModal();
 		loadTasks();
