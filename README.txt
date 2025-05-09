@@ -1,5 +1,4 @@
 # CC105 Task Manager App
-
 This is a simple task manager app built with HTML, CSS, JavaScript, Node.js, and MySQL.
 
 ## Requirements
@@ -25,13 +24,16 @@ This is a simple task manager app built with HTML, CSS, JavaScript, Node.js, and
     - Hostname: localhost
     - Port: 3306
     - Username: root
-    - Password: "" (No password / empty)
+    - Password: ("Leave this blank, unless you already have one set. In that case, you'd have to modify the credentials in serve.js")
+    NOTE: You will need to match the credentials from the "server.js" file (around line:13 - 19). This are the default, but if ever you changed the
+    configuration, feel free to match them via editing the "server.js" file.
 
 2. Start your MySQL Server (In MySQL Workbench or XAMPP)
 3. Import / Restore "database-setup.sql" and execute the entire query to create the necessary database
 4. Go to VS Code and open the project
 5. Open a new Terminal (Ctrl + `) and run the following:
-    - node server.js
+    - npm install # just to make sure everything works
+    - node server.js # to run the local server
     NOTE: to know if it is connected, it should output: 
         -> Server running on http://localhost:3000
         -> MySQL Connected!
