@@ -47,7 +47,6 @@ If you don't have Node.js installed:
    	host: "localhost",
    	user: "root",
    	password: "", // Or your password
-   	database: "db_group5_cc105",
    	port: 3306,
    	multipleStatements: true
    });

@@ -1,5 +1,4 @@
 const express = require("express");
-// const mysql = require("mysql");
 const mysql = require("mysql2");
 const cors = require("cors");
 
@@ -15,7 +14,6 @@ const db = mysql.createPool({
 	host: "localhost",
 	user: "root",
 	password: "",
-	database: "db_group5_cc105",
 	port: 3306,
 	multipleStatements: true
 });
